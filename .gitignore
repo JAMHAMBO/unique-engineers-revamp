@@ -1,0 +1,80 @@
+# ==============================================================================
+# UNIQUE ENGINEERS - Git Ignore Configuration
+# ==============================================================================
+
+# Legacy Reference Website (Preserved locally, excluded from Git/Vercel)
+legacy-website/
+"legacy-website/"
+
+# Dependencies
+node_modules/
+new-website/node_modules/
+.pnp
+.pnp.js
+
+# Next.js Build & Cache Outputs
+.next/
+new-website/.next/
+out/
+new-website/out/
+build/
+new-website/build/
+.swc/
+new-website/.swc/
+.turbo/
+new-website/.turbo/
+
+# Local Inquiry Storage & Form Submissions (RFQ logs)
+.data/
+new-website/.data/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment Variables & Secrets
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE & Editor Settings
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak
+
+# Testing & Coverage
+coverage/
+new-website/coverage/
+.nyc_output/
+
+# TypeScript Build Info
+*.tsbuildinfo
+next-env.d.ts
+
+# Temporary / Scratch Files
+scratch/
+temp/
+tmp/
+
