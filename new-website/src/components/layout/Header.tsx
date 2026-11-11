@@ -23,13 +23,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-slate-200">
-      {/* 2. Main Navigation Bar — Clean, Expanded Width, Never Wraps */}
+      {/* 2. Main Navigation Bar — Proportionate, Clean, Expanded Width, Never Wraps */}
       <div className="max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 sm:h-22">
+        <div className="flex items-center justify-between h-[70px] sm:h-[74px] lg:h-[78px]">
 
-          {/* Logo — Left Aligned, Enlarged, Crisp */}
-          <Link href="/" className="flex items-center group shrink-0 py-1.5">
-            <div className="relative w-64 sm:w-72 md:w-80 h-16 sm:h-18 md:h-20">
+          {/* Logo — Left Aligned, Proportionate & Crisp */}
+          <Link href="/" className="flex items-center group shrink-0 py-1">
+            <div className="relative w-48 sm:w-56 lg:w-60 h-11 sm:h-[50px] lg:h-[58px]">
               <Image
                 src="/images/logo.png"
                 alt="UNIQUE ENGINEERS Logo"
@@ -154,7 +154,7 @@ export function Header() {
               download
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3.5 py-2.5 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap shadow-2xs"
+              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3.5 py-2 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap shadow-2xs"
               title="Download Official 2026 Company Profile (PDF)"
             >
               <FileText className="w-3.5 h-3.5 text-[#1A3A6B] shrink-0" />
@@ -163,10 +163,10 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-4 xl:px-5 py-2.5 rounded text-xs xl:text-sm shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
+              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-4 xl:px-4.5 py-2 rounded text-xs xl:text-[13px] shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
             >
               <span>Request Quote</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 

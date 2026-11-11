@@ -44,12 +44,6 @@ export function HeroSlider() {
           {/* Left Column (7 cols): Formal Industrial Engineering Headline & CTAs */}
           <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
             
-            {/* Accreditation Badge */}
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#1A3A6B]/80 border border-amber-400/30 text-amber-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-              <span>EST. 1999 · 25+ Years of Turnkey Industrial Execution</span>
-            </div>
-
             {/* Headline — Exactly 2 lines on desktop, impactful and formal */}
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight font-heading">
               Turnkey Installation &amp; Fabrication for{" "}
@@ -137,8 +131,7 @@ export function HeroSlider() {
                     <Users className="w-3.5 h-3.5 shrink-0" />
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Man Days</span>
                   </div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading">50,000+</p>
-                  <p className="text-[11px] text-slate-300 font-medium mt-0.5">1 Manday --{">"} 8 Manhours </p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading">23 Lakhs+</p>
                 </div>
 
                 <div className="bg-[#0a182e] border border-emerald-500/40 rounded-lg p-3">
