@@ -59,7 +59,7 @@ export function HeroSlider() {
             {/* Subtitle — Authoritative, concise */}
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
               Operating continuously since 1999. Trusted mechanical sub-contractor to global EPC leaders —{" "}
-              <strong className="text-white">Eisenmann, Dürr, TEIL, Taikisha, Bullows &amp; GEICO</strong> —
+              <strong className="text-white">Eisenmann, Dürr, TEIL, Taikisha, J. Wagner, Bullows &amp; GEICO</strong> —
               delivering complex paint shops, heavy conveyors, and steel structures with a{" "}
               <span className="text-emerald-400 font-bold">100% Zero Casualty Record</span>.
             </p>
@@ -104,7 +104,7 @@ export function HeroSlider() {
                 <div className="flex items-center space-x-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-200">
-                    Contractor Credentials
+                    UNIQUE ENGINEERS Credentials
                   </span>
                 </div>
                 <span className="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded font-semibold">
@@ -135,10 +135,10 @@ export function HeroSlider() {
                 <div className="bg-[#0a182e] border border-slate-700/70 rounded-lg p-3">
                   <div className="flex items-center space-x-1.5 text-cyan-400 mb-1">
                     <Users className="w-3.5 h-3.5 shrink-0" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">OEM Clients</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Man Days</span>
                   </div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading">50+</p>
-                  <p className="text-[11px] text-slate-300 font-medium mt-0.5">Major Tier-1 &amp; EPCs</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading">50,000+</p>
+                  <p className="text-[11px] text-slate-300 font-medium mt-0.5">1 Manday --{">"} 8 Manhours </p>
                 </div>
 
                 <div className="bg-[#0a182e] border border-emerald-500/40 rounded-lg p-3">
@@ -157,7 +157,7 @@ export function HeroSlider() {
                   href="/projects"
                   className="text-amber-400 hover:text-amber-300 font-semibold inline-flex items-center space-x-1"
                 >
-                  <span>500+ Project List</span>
+                  <span>Major Project List</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
