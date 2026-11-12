@@ -105,7 +105,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["Engineered for heavy cyclonic wind and seismic loads", "Turnkey tandem crane lifting", "Integrated sampling platforms & EPA/CPCB test ports", "Heat-resistant industrial protective coatings"],
     imageFolder: "chimney",
-    images: ["/images/services/chimney/1.png", "/images/services/chimney/2.png", "/images/services/chimney/3.png", "/images/services/chimney/4.png"],
+    images: ["/images/services/chimney/1.png", "/images/services/chimney/2.png"],
   },
 
   // 5. Platforms and under guards
@@ -190,7 +190,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["Dynamic fatigue-resistant structural engineering", "Minimal site downtime during ceiling suspension", "HSFG calibrated torque-bolted connections", "Custom spans over busy production aisles"],
     imageFolder: "conveyor_structure",
-    images: ["/images/services/conveyor_structure/1.png", "/images/services/conveyor_structure/2.png", "/images/services/conveyor_structure/3.png", "/images/services/conveyor_structure/4.png"],
+    images: ["/images/services/conveyor_structure/1.png", "/images/services/conveyor_structure/2.png", "/images/services/conveyor_structure/3.png"],
   },
 
   // 9. Conveyor and Handling Systems
@@ -318,7 +318,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["100% Certified Silicone-Free (zero paint craters)", "High thermal resistance up to 220°C for ovens", "Weather, chemical, and ozone resistant EPDM", "Custom extruded cross-sections for plant doors & ducts"],
     imageFolder: "silicon_pvc",
-    images: ["/images/services/silicon_pvc/1.png", "/images/services/silicon_pvc/2.png", "/images/services/silicon_pvc/3.png", "/images/services/silicon_pvc/4.png"],
+    images: ["/images/services/silicon_pvc/1.png", "/images/services/silicon_pvc/2.png", "/images/services/silicon_pvc/3.png"],
   },
 
   // 15. Painting Robot
@@ -339,7 +339,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["500+ Robot installation track record", "Sub-millimeter tracking rail alignment", "Cleanroom-standard rigging practices", "Compatible with ABB, Dürr, Fanuc, and Yaskawa systems"],
     imageFolder: "painting_robot",
-    images: ["/images/services/painting_robot/1.png", "/images/services/painting_robot/2.png", "/images/services/painting_robot/3.png", "/images/services/painting_robot/4.png"],
+    images: ["/images/services/painting_robot/1.png", "/images/services/painting_robot/2.png", "/images/services/painting_robot/3.png"],
     featured: true,
   },
 
@@ -403,7 +403,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["Experienced site managers with 25+ years hands-on track record", "Comprehensive site tooling, rigging gear, and heavy cranes", "Zero casualty safety protocol enforced daily", "Seamless coordination with global EPC project managers"],
     imageFolder: "ercection_commissioning",
-    images: ["/images/services/ercection_commissioning/1.png", "/images/services/ercection_commissioning/2.png", "/images/services/ercection_commissioning/3.png", "/images/services/ercection_commissioning/4.png"],
+    images: ["/images/services/ercection_commissioning/1.png", "/images/services/ercection_commissioning/2.png"],
     featured: true,
   },
 
@@ -446,7 +446,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["Proven track record across 200+ fast-track shutdowns", "24/7 round-the-clock shift capability", "Pre-fabrication strategies to compress site hours", "Zero startup delay record on production restart"],
     imageFolder: "critical_shutdown",
-    images: ["/images/services/critical_shutdown/1.png", "/images/services/critical_shutdown/2.png", "/images/services/critical_shutdown/3.png", "/images/services/critical_shutdown/4.png"],
+    images: ["/images/services/critical_shutdown/1.png", "/images/services/critical_shutdown/2.png"],
     featured: true,
   },
 
@@ -468,7 +468,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["Certified shatter-proof safety performance", "Chemical & solvent overspray resistance", "Non-silicone mounting gaskets", "Crystal-clear optical inspection viewing"],
     imageFolder: "toughed_glass",
-    images: ["/images/services/toughed_glass/1.png", "/images/services/toughed_glass/2.png", "/images/services/toughed_glass/3.png", "/images/services/toughed_glass/4.png"],
+    images: ["/images/services/toughed_glass/1.png", "/images/services/toughed_glass/2.png"],
   },
 
   // 22. Plant Shifting and Re-location
@@ -489,7 +489,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["20+ Complete plant relocations executed across India", "Match-mark cataloging system preventing assembly confusion", "Structural re-strengthening and modernization during re-erection", "Seamless turnkey delivery from origin to operational handover"],
     imageFolder: "plant_shifting",
-    images: ["/images/services/plant_shifting/1.png", "/images/services/plant_shifting/2.png", "/images/services/plant_shifting/3.png", "/images/services/plant_shifting/4.png"],
+    images: ["/images/services/plant_shifting/1.png", "/images/services/plant_shifting/2.png"],
   },
 
   // 23. Fire Fighting Systems
@@ -510,7 +510,7 @@ export const servicesData: ServiceItem[] = [
     ],
     keyFeatures: ["NFPA and Tariff Advisory Committee (TAC) compliance", "High-velocity deluge spray for solvent hazards", "Rigorous hydrostatic pressure certification", "Seamless integration with plant emergency shutdowns"],
     imageFolder: "fighting_systems",
-    images: ["/images/services/fighting_systems/1.png", "/images/services/fighting_systems/2.png", "/images/services/fighting_systems/3.png", "/images/services/fighting_systems/4.png"],
+    images: ["/images/services/fighting_systems/1.png", "/images/services/fighting_systems/2.png"],
   },
 
   // 24. Piping

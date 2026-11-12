@@ -1,7 +1,7 @@
 services:
   - type: web
     name: unique-engineers-revamp
-    env: static
+    runtime: static
     rootDir: new-website
     buildCommand: npm install && npm run build
     staticPublishPath: ./out
@@ -82,3 +82,4 @@ services:
       - type: redirect
         source: /maintanance.asp
         destination: /services/plant-maintenance
+
