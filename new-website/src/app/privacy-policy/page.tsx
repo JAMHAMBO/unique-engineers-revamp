@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { companyData } from "@/data/company";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+// " | UNIQUE ENGINEERS" is appended automatically by the root layout title template.
 export const metadata = {
-  title: "Privacy Policy | UNIQUE ENGINEERS",
+  title: "Privacy Policy",
   description: "Privacy policy and personal data protection principles for UNIQUE ENGINEERS.",
 };
 

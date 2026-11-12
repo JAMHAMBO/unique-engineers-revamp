@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { companyData } from "@/data/company";
 
 export const viewport: Viewport = {
   themeColor: "#1f54a3",

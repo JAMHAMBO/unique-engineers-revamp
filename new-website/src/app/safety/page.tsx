@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { safetyComplianceData } from "@/data/capabilities";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import {
   ShieldCheck,
@@ -10,7 +9,6 @@ import {
   Wind,
   HardHat,
   ArrowRight,
-  HeartHandshake,
 } from "lucide-react";
 
 export const metadata = {

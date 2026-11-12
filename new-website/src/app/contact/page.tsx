@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { companyData } from "@/data/company";
+import { companyData, toTelHref, whatsappNumber } from "@/data/company";
 import { servicesData } from "@/data/services";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import {
@@ -106,14 +106,14 @@ export default function ContactPage() {
         `Plant Site Location: ${formData.location || "Not specified"}\n\n` +
         `*Project Scope Details:*\n${formData.message}`
       );
-      window.open(`https://wa.me/919920555852?text=${waText}`, "_blank");
+      window.open(`https://wa.me/${whatsappNumber}?text=${waText}`, "_blank");
       setSentStatus({
         channel: "whatsapp",
         id: assignedId,
         message: "WhatsApp opened in a new tab! Your RFQ details are preserved below — you can also send via Email.",
       });
     } else if (channel === "gmail") {
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=murtaza@uniqueengineers.com&su=${encodeURIComponent(
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${companyData.keyContact.email}&su=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(formattedBody)}`;
       window.open(gmailUrl, "_blank");
@@ -123,7 +123,7 @@ export default function ContactPage() {
         message: "Gmail compose opened in a new tab! Your RFQ details are preserved below — you can also send via WhatsApp.",
       });
     } else if (channel === "mailto") {
-      const mailtoUrl = `mailto:murtaza@uniqueengineers.com?subject=${encodeURIComponent(
+      const mailtoUrl = `mailto:${companyData.keyContact.email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(formattedBody)}`;
       const link = document.createElement("a");
@@ -136,7 +136,7 @@ export default function ContactPage() {
       });
     } else if (channel === "copy") {
       const clipboardText =
-        `To: murtaza@uniqueengineers.com\n` +
+        `To: ${companyData.keyContact.email}\n` +
         `Subject: ${subject}\n\n` +
         `${formattedBody}`;
       navigator.clipboard.writeText(clipboardText);
@@ -180,7 +180,7 @@ export default function ContactPage() {
               <div className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-400 shrink-0" />
                 <a
-                  href={`tel:${companyData.keyContact.phone.replace(/[^0-9+]/g, "")}`}
+                  href={toTelHref(companyData.keyContact.phone)}
                   className="font-bold text-white hover:text-amber-300 transition-colors"
                 >
                   {companyData.keyContact.phone} (Direct / WhatsApp)
@@ -189,7 +189,7 @@ export default function ContactPage() {
               <div className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-400 shrink-0" />
                 <a
-                  href={`tel:${companyData.keyContact.alternatePhone.replace(/[^0-9+]/g, "")}`}
+                  href={toTelHref(companyData.keyContact.alternatePhone)}
                   className="hover:text-white transition-colors"
                 >
                   {companyData.keyContact.alternatePhone} (Alternate)
@@ -198,7 +198,7 @@ export default function ContactPage() {
               <div className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-400 shrink-0" />
                 <a
-                  href={`tel:${companyData.keyContact.officePhone.replace(/[^0-9+]/g, "")}`}
+                  href={toTelHref(companyData.keyContact.officePhone)}
                   className="hover:text-white transition-colors"
                 >
                   {companyData.keyContact.officePhone} (Office Landline)
@@ -327,6 +327,7 @@ export default function ContactPage() {
                 type="text"
                 name="user_verification_token"
                 tabIndex={-1}
+                aria-hidden="true"
                 autoComplete="off"
                 value={formData.honeypot}
                 onChange={(e) =>
@@ -337,10 +338,12 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-name" className="block font-semibold text-slate-700 mb-1">
                     Your Full Name *
                   </label>
                   <input
+                    id="contact-name"
+                    autoComplete="name"
                     type="text"
                     required
                     placeholder="e.g. Rajesh Sharma"
@@ -353,10 +356,12 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-company" className="block font-semibold text-slate-700 mb-1">
                     Company / Organization
                   </label>
                   <input
+                    id="contact-company"
+                    autoComplete="organization"
                     type="text"
                     placeholder="e.g. Mahindra / Tata Motors / Tier-1 Vendor"
                     value={formData.company}
@@ -370,10 +375,12 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-phone" className="block font-semibold text-slate-700 mb-1">
                     Phone / Mobile Number *
                   </label>
                   <input
+                    id="contact-phone"
+                    autoComplete="tel"
                     type="tel"
                     required
                     placeholder="+91 98765 43210"
@@ -386,10 +393,12 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-email" className="block font-semibold text-slate-700 mb-1">
                     Business Email Address
                   </label>
                   <input
+                    id="contact-email"
+                    autoComplete="email"
                     type="email"
                     placeholder="you@company.com"
                     value={formData.email}
@@ -403,10 +412,11 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-service" className="block font-semibold text-slate-700 mb-1">
                     Primary Service Discipline
                   </label>
                   <select
+                    id="contact-service"
                     value={formData.service}
                     onChange={(e) =>
                       setFormData({ ...formData, service: e.target.value })
@@ -421,10 +431,11 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="contact-location" className="block font-semibold text-slate-700 mb-1">
                     Plant Site Location (City / State)
                   </label>
                   <input
+                    id="contact-location"
                     type="text"
                     placeholder="e.g. Pune, Chakan, Sanand, Chennai"
                     value={formData.location}
@@ -437,10 +448,11 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">
+                <label htmlFor="contact-message" className="block font-semibold text-slate-700 mb-1">
                   Project Scope, Tonnage or Schedule Details *
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   required
                   placeholder="Describe equipment type, structural tonnages, conveyor lengths, target shutdown window, or tender timelines..."
@@ -476,7 +488,7 @@ export default function ContactPage() {
                     <span className="text-left leading-tight">
                       <span className="block font-bold">Send via WhatsApp</span>
                       <span className="block text-[11px] font-normal text-emerald-100">
-                        Direct to +91 99205 55852
+                        Direct to {companyData.keyContact.phone}
                       </span>
                     </span>
                   </button>
@@ -492,7 +504,7 @@ export default function ContactPage() {
                     <span className="text-left leading-tight">
                       <span className="block font-bold">Send via Email (Gmail)</span>
                       <span className="block text-[11px] font-normal text-slate-300">
-                        murtaza@uniqueengineers.com
+                        {companyData.keyContact.email}
                       </span>
                     </span>
                   </button>

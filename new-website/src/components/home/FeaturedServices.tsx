@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { servicesData, serviceCategories } from "@/data/services";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function FeaturedServices() {
   const featured = servicesData.filter((s) => s.featured).slice(0, 8);
@@ -72,6 +72,7 @@ export function FeaturedServices() {
                   src={service.images[0] || "/images/services/ms_structures/1.png"}
                   alt={service.title}
                   fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3">

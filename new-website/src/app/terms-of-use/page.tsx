@@ -4,8 +4,9 @@ import { companyData } from "@/data/company";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ArrowRight } from "lucide-react";
 
+// " | UNIQUE ENGINEERS" is appended automatically by the root layout title template.
 export const metadata = {
-  title: "Terms of Use | UNIQUE ENGINEERS",
+  title: "Terms of Use",
   description: "Terms and conditions governing the use of the UNIQUE ENGINEERS website and services.",
 };
 

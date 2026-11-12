@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { companyData } from "@/data/company";
 import {
   ArrowRight,
   PhoneCall,
@@ -10,25 +9,27 @@ import {
   Factory,
   Users,
   CheckCircle2,
-  FileText,
 } from "lucide-react";
 
 export function HeroSlider() {
   return (
     <div className="relative bg-[#081528] text-white overflow-hidden border-b border-slate-800">
       {/* Real Industrial Shop-Floor Photography Background with Deep Navy Scrim */}
-      <div className="absolute inset-0 opacity-25 pointer-events-none">
+      {/* Decorative only — empty alt + aria-hidden so screen readers skip it */}
+      <div className="absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true">
         <Image
           src="/images/services/bottom_conveyor/4.png"
-          alt="Automotive Paint Finishing Plant Installation"
+          alt=""
           fill
           priority
-          className="object-cover object-center filter saturate-50"
+          sizes="100vw"
+          className="object-cover object-center saturate-50"
         />
       </div>
 
       {/* Subtle Technical Grid / Hatching */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
           backgroundImage:
@@ -62,11 +63,11 @@ export function HeroSlider() {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300 pt-0.5">
               <span className="inline-flex items-center space-x-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span><strong className="text-white">75+</strong> Paintshops Built</span>
+                <span><strong className="text-white">175+</strong> Paintshops Built</span>
               </span>
               <span className="inline-flex items-center space-x-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span><strong className="text-white">2000m+</strong> Conveyor Lines</span>
+                <span><strong className="text-white">20,000m+</strong> Conveyor Lines</span>
               </span>
             </div>
 

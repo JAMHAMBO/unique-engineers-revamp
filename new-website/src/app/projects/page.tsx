@@ -5,7 +5,6 @@ import Link from "next/link";
 import { projectsData, projectStats } from "@/data/projects";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import {
-  CheckCircle2,
   Calendar,
   MapPin,
   Building,

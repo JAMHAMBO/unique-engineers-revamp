@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { servicesData, ServiceItem } from "@/data/services";
-import { companyData } from "@/data/company";
+import { servicesData } from "@/data/services";
+import { companyData, buildWhatsAppUrl } from "@/data/company";
 import {
   CheckCircle2,
   ArrowRight,
@@ -29,8 +29,9 @@ export async function generateMetadata({ params }: ServicePageProps) {
   const service = servicesData.find((s) => s.slug === slug);
   if (!service) return { title: "Service Not Found" };
 
+  // " | UNIQUE ENGINEERS" is appended automatically by the root layout title template.
   return {
-    title: `${service.title} | UNIQUE ENGINEERS`,
+    title: service.title,
     description: service.summary,
   };
 }
@@ -154,6 +155,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       src={img}
                       alt={`${service.shortTitle} project installation photo ${idx + 1}`}
                       fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -192,7 +194,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   Request a Formal Quotation
                 </Link>
                 <a
-                  href={`https://wa.me/919920555852?text=${encodeURIComponent(`Hello Mr. Murtaza, I am inquiring about ${service.title} from UNIQUE ENGINEERS.`)}`}
+                  href={buildWhatsAppUrl(
+                    `Hello ${companyData.keyContact.name}, I am inquiring about ${service.title} from UNIQUE ENGINEERS.`
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs text-center inline-flex items-center justify-center space-x-2 transition-colors"

@@ -11,8 +11,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+// " | UNIQUE ENGINEERS" is appended automatically by the root layout title template.
 export const metadata = {
-  title: "Leadership & Engineering Team | UNIQUE ENGINEERS",
+  title: "Leadership & Engineering Team",
   description:
     "Meet our seasoned engineering leadership: Mr. Murtaza, Mr. Gautam Basu, Mr. Vijay Bhide, and Mr. D.G. Bhatt — bringing over 100+ combined years of automotive paint shop execution.",
 };

@@ -3,12 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { companyData } from "@/data/company";
+import { companyData, toTelHref } from "@/data/company";
 import { serviceCategories } from "@/data/services";
 import {
   Phone,
-  Mail,
-  ShieldCheck,
   Menu,
   X,
   ChevronDown,
@@ -16,6 +14,40 @@ import {
   MessageCircle,
   FileText,
 } from "lucide-react";
+
+type NavItem = { href: string; label: string };
+
+const DESKTOP_NAV_LINK_CLASS =
+  "px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap";
+
+/** Desktop links rendered before the "Services" dropdown. */
+const DESKTOP_NAV_BEFORE_SERVICES: NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+];
+
+/** Desktop links rendered after the "Services" dropdown. */
+const DESKTOP_NAV_AFTER_SERVICES: NavItem[] = [
+  { href: "/projects", label: "Projects" },
+  { href: "/capabilities", label: "Capabilities" },
+  { href: "/safety", label: "Safety (EHS)" },
+  { href: "/clients", label: "Clients" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+];
+
+const MOBILE_NAV: NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services (All 24 Disciplines)" },
+  { href: "/projects", label: "Projects (500+ Delivered)" },
+  { href: "/capabilities", label: "Workforce & Equipment" },
+  { href: "/safety", label: "Safety (EHS Record)" },
+  { href: "/clients", label: "Client Portfolio (50+ OEMs)" },
+  { href: "/gallery", label: "Photo Gallery" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact & Office Details" },
+];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,26 +67,22 @@ export function Header() {
                 alt="UNIQUE ENGINEERS Logo"
                 fill
                 priority
+                sizes="240px"
                 className="object-contain object-left"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation Links — All items on ONE unified line with whitespace-nowrap */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 2xl:space-x-2">
-            <Link
-              href="/"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/about"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              About Us
-            </Link>
+          <nav
+            aria-label="Main navigation"
+            className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 2xl:space-x-2"
+          >
+            {DESKTOP_NAV_BEFORE_SERVICES.map((item) => (
+              <Link key={item.href} href={item.href} className={DESKTOP_NAV_LINK_CLASS}>
+                {item.label}
+              </Link>
+            ))}
 
             {/* Services Dropdown */}
             <div
@@ -64,10 +92,12 @@ export function Header() {
             >
               <Link
                 href="/services"
-                className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors inline-flex items-center space-x-1 whitespace-nowrap"
+                aria-haspopup="true"
+                aria-expanded={servicesDropdownOpen}
+                className={`${DESKTOP_NAV_LINK_CLASS} inline-flex items-center space-x-1`}
               >
                 <span>Services</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
               </Link>
 
               {servicesDropdownOpen && (
@@ -104,47 +134,11 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              href="/projects"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Projects
-            </Link>
-
-            <Link
-              href="/capabilities"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Capabilities
-            </Link>
-
-            <Link
-              href="/safety"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Safety (EHS)
-            </Link>
-
-            <Link
-              href="/clients"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Clients
-            </Link>
-
-            <Link
-              href="/gallery"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Gallery
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap"
-            >
-              Contact
-            </Link>
+            {DESKTOP_NAV_AFTER_SERVICES.map((item) => (
+              <Link key={item.href} href={item.href} className={DESKTOP_NAV_LINK_CLASS}>
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Desktop Right CTA Area — Aligned, Professional */}
@@ -154,7 +148,7 @@ export function Header() {
               download
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3.5 py-2 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap shadow-2xs"
+              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3.5 py-2 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap"
               title="Download Official 2026 Company Profile (PDF)"
             >
               <FileText className="w-3.5 h-3.5 text-[#1A3A6B] shrink-0" />
@@ -163,7 +157,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-4 xl:px-4.5 py-2 rounded text-xs xl:text-[13px] shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
+              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-4 py-2 rounded text-xs xl:text-[13px] shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -173,16 +167,19 @@ export function Header() {
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-2">
             <a
-              href={`tel:${companyData.keyContact.phone.replace(/[^0-9+]/g, "")}`}
+              href={toTelHref(companyData.keyContact.phone)}
               className="p-2 text-[#1A3A6B] hover:bg-blue-50 rounded-full"
               aria-label="Call UNIQUE ENGINEERS"
             >
               <Phone className="w-5 h-5" />
             </a>
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
               className="p-2 text-slate-700 hover:bg-slate-100 rounded-lg focus:outline-none"
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -196,7 +193,10 @@ export function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-2xl">
+        <div
+          id="mobile-nav"
+          className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-2xl"
+        >
           <div className="bg-slate-50 border border-slate-200 p-3 rounded-lg text-xs space-y-1 mb-3">
             <p className="font-bold text-[#1A3A6B]">
               UNIQUE ENGINEERS · Since 1999
@@ -207,18 +207,7 @@ export function Header() {
             </p>
           </div>
 
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About Us" },
-            { href: "/services", label: "Services (All 24 Disciplines)" },
-            { href: "/projects", label: "Projects (500+ Delivered)" },
-            { href: "/capabilities", label: "Workforce & Equipment" },
-            { href: "/safety", label: "Safety (EHS Record)" },
-            { href: "/clients", label: "Client Portfolio (50+ OEMs)" },
-            { href: "/gallery", label: "Photo Gallery" },
-            { href: "/careers", label: "Careers" },
-            { href: "/contact", label: "Contact & Office Details" },
-          ].map((item) => (
+          {MOBILE_NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}

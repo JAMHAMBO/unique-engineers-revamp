@@ -1,16 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { companyData } from "@/data/company";
+import { companyData, toTelHref } from "@/data/company";
 import {
-  MapPin,
   Phone,
   Mail,
   ShieldCheck,
   Building2,
   Factory,
-  ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 
 export function Footer() {
@@ -18,7 +15,7 @@ export function Footer() {
     <footer className="bg-[#071020] text-slate-300 pt-14 pb-10 border-t-4 border-amber-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-14 border-b border-brand-900/60 align-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-14 border-b border-brand-900/60">
           {/* Column 1: Company Profile & Core Credentials */}
           <div className="space-y-4">
             <div className="relative w-48 h-12 bg-white rounded p-1.5 inline-block">
@@ -26,6 +23,7 @@ export function Footer() {
                 src="/images/logo.png"
                 alt="UNIQUE ENGINEERS Logo"
                 fill
+                sizes="192px"
                 className="object-contain p-1"
               />
             </div>
@@ -71,7 +69,7 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 text-brand-400 shrink-0" />
                 <a
-                  href={`tel:${companyData.keyContact.phone.replace(/[^0-9+]/g, "")}`}
+                  href={toTelHref(companyData.keyContact.phone)}
                   className="hover:text-white transition-colors"
                 >
                   {companyData.keyContact.phone} (Direct / WhatsApp)
@@ -80,7 +78,7 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 text-brand-400 shrink-0" />
                 <a
-                  href={`tel:${companyData.keyContact.officePhone.replace(/[^0-9+]/g, "")}`}
+                  href={toTelHref(companyData.keyContact.officePhone)}
                   className="hover:text-white transition-colors"
                 >
                   {companyData.keyContact.officePhone} (Office Line)

@@ -96,3 +96,16 @@ export const companyData: CompanyInfo = {
   },
 };
 
+/** Converts a display phone number (e.g. "+91 99205 55852") into a `tel:` href. */
+export function toTelHref(phone: string): string {
+  return `tel:${phone.replace(/[^0-9+]/g, "")}`;
+}
+
+/** WhatsApp number in wa.me format (digits only), derived from the primary contact phone. */
+export const whatsappNumber = companyData.keyContact.phone.replace(/\D/g, "");
+
+/** Builds a wa.me link with a pre-filled, URL-encoded message. */
+export function buildWhatsAppUrl(message: string): string {
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+

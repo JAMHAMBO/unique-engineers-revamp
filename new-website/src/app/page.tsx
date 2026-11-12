@@ -3,17 +3,9 @@ import Link from "next/link";
 import { HeroSlider } from "@/components/home/HeroSlider";
 import { FeaturedServices } from "@/components/home/FeaturedServices";
 import { ClientLogoMarquee } from "@/components/home/ClientLogoMarquee";
-import { companyData } from "@/data/company";
+import { companyData, toTelHref } from "@/data/company";
 import { projectsData } from "@/data/projects";
-import {
-  ShieldCheck,
-  CheckCircle2,
-  ArrowRight,
-  Factory,
-  Users,
-  Wrench,
-  Award,
-} from "lucide-react";
+import { CheckCircle2, ArrowRight, Factory, Users } from "lucide-react";
 
 export default function HomePage() {
   const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 4);
@@ -218,7 +210,7 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href={`tel:${companyData.keyContact.phone.replace(/[^0-9+]/g, "")}`}
+              href={toTelHref(companyData.keyContact.phone)}
               className="border border-slate-500 hover:border-white text-white font-semibold px-8 py-3.5 rounded-sm transition-all text-sm inline-flex items-center space-x-2"
             >
               <span>Call: {companyData.keyContact.phone}</span>
@@ -226,7 +218,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
-            <span>Direct: Mr. Murtaza · +91 99205 55852</span>
+            <span>Direct: {companyData.keyContact.name} · {companyData.keyContact.phone}</span>
             <span className="text-slate-600">·</span>
             <span>Registered Office: Fort, Mumbai – 400 001</span>
             <span className="text-slate-600">·</span>

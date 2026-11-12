@@ -1,16 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { companyData } from "@/data/company";
+import { companyData, whatsappNumber } from "@/data/company";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import {
-  Briefcase,
   Users,
   ShieldCheck,
   CheckCircle2,
   Mail,
   MessageCircle,
-  Building,
   GraduationCap,
   Copy,
   ExternalLink,
@@ -133,13 +131,13 @@ export default function CareersPage() {
         `Email: ${formData.email || "N/A"}\n\n` +
         `*Experience & Trade Summary:*\n${formData.notes || "Available to discuss credentials."}`
       );
-      window.open(`https://wa.me/919920555852?text=${waText}`, "_blank");
+      window.open(`https://wa.me/${whatsappNumber}?text=${waText}`, "_blank");
       setSentStatus({
         channel: "whatsapp",
         message: "WhatsApp opened in a new tab! Your application details remain preserved below.",
       });
     } else if (channel === "gmail") {
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=murtaza@uniqueengineers.com&su=${encodeURIComponent(
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${companyData.keyContact.email}&su=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(formattedBody)}`;
       window.open(gmailUrl, "_blank");
@@ -148,7 +146,7 @@ export default function CareersPage() {
         message: "Gmail compose opened in a new tab! Your application details remain preserved below.",
       });
     } else if (channel === "mailto") {
-      const mailtoUrl = `mailto:murtaza@uniqueengineers.com?subject=${encodeURIComponent(
+      const mailtoUrl = `mailto:${companyData.keyContact.email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(formattedBody)}`;
       const link = document.createElement("a");
@@ -159,7 +157,7 @@ export default function CareersPage() {
         message: "Default mail client launched! Your application details remain preserved below.",
       });
     } else if (channel === "copy") {
-      const copyContent = `To: murtaza@uniqueengineers.com\nSubject: ${subject}\n\n${formattedBody}`;
+      const copyContent = `To: ${companyData.keyContact.email}\nSubject: ${subject}\n\n${formattedBody}`;
       navigator.clipboard.writeText(copyContent);
       setSentStatus({
         channel: "copy",
@@ -296,10 +294,12 @@ export default function CareersPage() {
                 className="space-y-4 text-xs"
               >
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="career-name" className="block font-semibold text-slate-700 mb-1">
                     Full Name *
                   </label>
                   <input
+                    id="career-name"
+                    autoComplete="name"
                     type="text"
                     required
                     placeholder="e.g. Ramesh Kumar"
@@ -314,10 +314,12 @@ export default function CareersPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
+                    <label htmlFor="career-phone" className="block font-semibold text-slate-700 mb-1">
                       Phone / WhatsApp *
                     </label>
                     <input
+                      id="career-phone"
+                      autoComplete="tel"
                       type="tel"
                       required
                       placeholder="+91 98765 43210"
@@ -330,10 +332,12 @@ export default function CareersPage() {
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
+                    <label htmlFor="career-email" className="block font-semibold text-slate-700 mb-1">
                       Email Address
                     </label>
                     <input
+                      id="career-email"
+                      autoComplete="email"
                       type="email"
                       placeholder="you@example.com"
                       value={formData.email}
@@ -347,10 +351,11 @@ export default function CareersPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
+                    <label htmlFor="career-position" className="block font-semibold text-slate-700 mb-1">
                       Applying For
                     </label>
                     <select
+                      id="career-position"
                       value={formData.position}
                       onChange={(e) =>
                         setFormData({ ...formData, position: e.target.value })
@@ -371,10 +376,11 @@ export default function CareersPage() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
+                    <label htmlFor="career-experience" className="block font-semibold text-slate-700 mb-1">
                       Experience Level
                     </label>
                     <select
+                      id="career-experience"
                       value={formData.experience}
                       onChange={(e) =>
                         setFormData({ ...formData, experience: e.target.value })
@@ -390,10 +396,11 @@ export default function CareersPage() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
+                  <label htmlFor="career-notes" className="block font-semibold text-slate-700 mb-1">
                     Qualifications & Trade Certifications
                   </label>
                   <textarea
+                    id="career-notes"
                     rows={3}
                     placeholder="State your welding certifications, previous OEM sites, or technical trade details..."
                     value={formData.notes}

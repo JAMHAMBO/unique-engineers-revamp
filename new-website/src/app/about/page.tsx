@@ -3,17 +3,14 @@ import Link from "next/link";
 import { companyData } from "@/data/company";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import {
-  ShieldCheck,
   Target,
   Eye,
   Award,
   Factory,
   Building2,
-  Users,
   CheckCircle2,
   ArrowRight,
   FileCheck,
-  CreditCard,
 } from "lucide-react";
 
 export const metadata = {

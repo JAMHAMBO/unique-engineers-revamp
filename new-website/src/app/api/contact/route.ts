@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { companyData } from "@/data/company";
 
 export async function POST(request: Request) {
   try {
@@ -63,7 +64,10 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("[CONTACT API ERROR]", error);
     return NextResponse.json(
-      { success: false, error: "Internal server error. Please call +91 99205 55852 directly." },
+      {
+        success: false,
+        error: `Internal server error. Please call ${companyData.keyContact.phone} directly.`,
+      },
       { status: 500 }
     );
   }

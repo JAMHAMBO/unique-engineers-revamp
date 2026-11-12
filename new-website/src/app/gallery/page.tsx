@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { servicesData } from "@/data/services";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { Filter, ArrowRight, ExternalLink } from "lucide-react";
+import { Filter, ArrowRight } from "lucide-react";
 
 interface GalleryPhoto {
   src: string;
@@ -57,6 +57,8 @@ export default function GalleryPage() {
             {filterTabs.map((tab) => (
               <button
                 key={tab.id}
+                type="button"
+                aria-pressed={selectedFilter === tab.id}
                 onClick={() => setSelectedFilter(tab.id)}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${
                   selectedFilter === tab.id

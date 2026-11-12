@@ -5,8 +5,6 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import {
   Users,
   Wrench,
-  ShieldCheck,
-  CheckCircle2,
   Cpu,
   Layers,
   ArrowRight,
