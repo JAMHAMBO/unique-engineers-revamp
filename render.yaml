@@ -1,0 +1,84 @@
+services:
+  - type: web
+    name: unique-engineers-revamp
+    env: static
+    rootDir: new-website
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./out
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      - type: redirect
+        source: /iis6954.asp
+        destination: /
+      - type: redirect
+        source: /Default.asp
+        destination: /
+      - type: redirect
+        source: /Default.aspx
+        destination: /
+      - type: redirect
+        source: /index.asp
+        destination: /
+      - type: redirect
+        source: /about_us.asp
+        destination: /about
+      - type: redirect
+        source: /services.asp
+        destination: /services
+      - type: redirect
+        source: /gallery.asp
+        destination: /gallery
+      - type: redirect
+        source: /clients.asp
+        destination: /clients
+      - type: redirect
+        source: /team.asp
+        destination: /team
+      - type: redirect
+        source: /team2.asp
+        destination: /team
+      - type: redirect
+        source: /safety.asp
+        destination: /safety
+      - type: redirect
+        source: /career.asp
+        destination: /careers
+      - type: redirect
+        source: /Career.asp
+        destination: /careers
+      - type: redirect
+        source: /news.asp
+        destination: /projects
+      - type: redirect
+        source: /contact_us.asp
+        destination: /contact
+      - type: redirect
+        source: /privacy_policy.asp
+        destination: /privacy-policy
+      - type: redirect
+        source: /terms_condition.asp
+        destination: /terms-of-use
+      - type: redirect
+        source: /ms_structure.asp
+        destination: /services/ms-structures
+      - type: redirect
+        source: /ducting.asp
+        destination: /services/ducting
+      - type: redirect
+        source: /platforms.asp
+        destination: /services/platforms-and-under-guards
+      - type: redirect
+        source: /maintanance.asp
+        destination: /services/plant-maintenance

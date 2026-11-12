@@ -53,29 +53,9 @@ export default function ContactPage() {
   const submitInquiry = async (channel: "whatsapp" | "gmail" | "mailto" | "copy") => {
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
     const assignedId = inquiryMeta.id || `INQ-${Date.now()}`;
     const assignedTime = inquiryMeta.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-
-    // 1. Silent asynchronous logging to background API (.data/inquiries.json)
-    try {
-      fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, preferredChannel: channel }),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.success && result.inquiryId) {
-            setInquiryMeta({ id: result.inquiryId, timestamp: result.timestamp });
-          }
-        })
-        .catch((err) => console.error("Silent log warning:", err));
-    } catch (e) {
-      console.error("API call error:", e);
-    } finally {
-      setIsSubmitting(false);
-    }
+    setInquiryMeta({ id: assignedId, timestamp: assignedTime });
 
     const subject = `[RFQ ${assignedId}] ${formData.service} - ${formData.company || formData.name}`;
     const formattedBody =

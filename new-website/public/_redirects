@@ -1,0 +1,22 @@
+# 21 Legacy ASP Redirects (301 Permanent)
+/iis6954.asp        /                                    301!
+/Default.asp        /                                    301!
+/Default.aspx       /                                    301!
+/index.asp          /                                    301!
+/about_us.asp       /about                               301!
+/services.asp       /services                            301!
+/gallery.asp        /gallery                             301!
+/clients.asp        /clients                             301!
+/team.asp           /team                                301!
+/team2.asp          /team                                301!
+/safety.asp         /safety                              301!
+/career.asp         /careers                             301!
+/Career.asp         /careers                             301!
+/news.asp           /projects                            301!
+/contact_us.asp     /contact                             301!
+/privacy_policy.asp /privacy-policy                      301!
+/terms_condition.asp /terms-of-use                       301!
+/ms_structure.asp   /services/ms-structures              301!
+/ducting.asp        /services/ducting                    301!
+/platforms.asp      /services/platforms-and-under-guards 301!
+/maintanance.asp    /services/plant-maintenance          301!
