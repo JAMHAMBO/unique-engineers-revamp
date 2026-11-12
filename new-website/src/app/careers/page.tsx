@@ -13,6 +13,7 @@ import {
   Copy,
   ExternalLink,
   AlertCircle,
+  Paperclip,
 } from "lucide-react";
 
 export default function CareersPage() {
@@ -87,7 +88,7 @@ export default function CareersPage() {
     if (!validateForm()) return;
 
     const refId = `APP-${Date.now()}`;
-    const subject = `[Job Application] ${formData.position} - ${formData.name} (${formData.experience})`;
+    const subject = `[Job Application] ${formData.position} - ${formData.name} (${formData.experience}) [CV Attached]`;
     const formattedBody =
       `Dear UNIQUE ENGINEERS Recruitment Team & Mr. Murtaza,\n\n` +
       `Please accept my application for the following position:\n\n` +
@@ -96,45 +97,32 @@ export default function CareersPage() {
       `• Experience Level: ${formData.experience}\n` +
       `• Contact Phone / Mobile: ${formData.phone}\n` +
       `• Email Address: ${formData.email || "Not specified"}\n\n` +
-      `Qualifications & Experience Summary:\n` +
-      `${formData.notes || "Ready to share detailed CV/resume upon request."}\n\n` +
+      `Qualifications & Trade Experience Summary:\n` +
+      `${formData.notes || "Not specified (ready to share detailed credentials upon interview)."}\n\n` +
+      `--------------------------------------------------\n` +
+      `📎 CV / RESUME ATTACHMENT:\n` +
+      `I have manually attached my CV / Resume document (PDF / Word) to this message.\n` +
+      `--------------------------------------------------\n\n` +
       `Reference ID: ${refId}\n` +
+      `Date: ${new Date().toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata" })}\n\n` +
       `Best regards,\n${formData.name}`;
-
-    // Silent background log
-    try {
-      fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          service: `Career: ${formData.position}`,
-          location: "Job Applicant",
-          message: `[${formData.experience}] ${formData.notes}`,
-          preferredChannel: channel,
-        }),
-      }).catch((e) => console.error("Silent log warning:", e));
-    } catch (e) {
-      console.error(e);
-    }
 
     if (channel === "whatsapp") {
       const waText = encodeURIComponent(
-        `*Job Application for UNIQUE ENGINEERS*\n` +
-        `Ref: ${refId}\n` +
-        `Name: ${formData.name}\n` +
-        `Position: ${formData.position}\n` +
-        `Experience: ${formData.experience}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Email: ${formData.email || "N/A"}\n\n` +
-        `*Experience & Trade Summary:*\n${formData.notes || "Available to discuss credentials."}`
+        `*Job Application - UNIQUE ENGINEERS*\n` +
+        `Ref: ${refId}\n\n` +
+        `• *Candidate Name:* ${formData.name}\n` +
+        `• *Position Applied For:* ${formData.position}\n` +
+        `• *Experience Level:* ${formData.experience}\n` +
+        `• *Phone / Mobile:* ${formData.phone}\n` +
+        `• *Email:* ${formData.email || "N/A"}\n\n` +
+        `*Qualifications & Experience Summary:*\n${formData.notes || "Ready to discuss credentials."}\n\n` +
+        `📎 *CV Attachment:* I am attaching my CV / Resume file directly to this WhatsApp chat.`
       );
       window.open(`https://wa.me/${whatsappNumber}?text=${waText}`, "_blank");
       setSentStatus({
         channel: "whatsapp",
-        message: "WhatsApp opened in a new tab! Your application details remain preserved below.",
+        message: "WhatsApp opened with your application pre-filled! Please attach your CV / Resume document directly in the chat before pressing Send.",
       });
     } else if (channel === "gmail") {
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${companyData.keyContact.email}&su=${encodeURIComponent(
@@ -143,7 +131,7 @@ export default function CareersPage() {
       window.open(gmailUrl, "_blank");
       setSentStatus({
         channel: "gmail",
-        message: "Gmail compose opened in a new tab! Your application details remain preserved below.",
+        message: "Gmail compose opened in a new tab! Click the paperclip icon (📎) to attach your CV / Resume before clicking Send.",
       });
     } else if (channel === "mailto") {
       const mailtoUrl = `mailto:${companyData.keyContact.email}?subject=${encodeURIComponent(
@@ -154,14 +142,14 @@ export default function CareersPage() {
       link.click();
       setSentStatus({
         channel: "mailto",
-        message: "Default mail client launched! Your application details remain preserved below.",
+        message: "Default mail client launched with application pre-filled! Please remember to attach your CV / Resume file before sending.",
       });
     } else if (channel === "copy") {
       const copyContent = `To: ${companyData.keyContact.email}\nSubject: ${subject}\n\n${formattedBody}`;
       navigator.clipboard.writeText(copyContent);
       setSentStatus({
         channel: "copy",
-        message: "Application message and recruitment email copied to clipboard!",
+        message: "Application message and recruitment email copied to clipboard! Paste it into your messaging or email app and attach your CV.",
       });
     }
   };
@@ -409,6 +397,17 @@ export default function CareersPage() {
                     }
                     className="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
                   />
+                </div>
+
+                {/* Static Hosting CV / Resume Attachment Instructions */}
+                <div className="bg-amber-50/90 border border-amber-200/90 rounded-xl p-3 text-xs text-amber-950 space-y-1">
+                  <div className="flex items-center space-x-1.5 font-bold text-amber-900">
+                    <Paperclip className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span>How to Attach Your CV / Resume:</span>
+                  </div>
+                  <p className="text-[11px] text-amber-900/85 leading-relaxed">
+                    When you click <strong>Apply via WhatsApp</strong> or <strong>Apply via Gmail</strong>, your application details will be pre-filled automatically. Please <strong>attach your CV / Resume document (PDF or Word)</strong> manually in the chat or email before pressing send.
+                  </p>
                 </div>
 
                 <div className="pt-2 space-y-2.5">

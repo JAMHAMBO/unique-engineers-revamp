@@ -18,7 +18,7 @@ import {
 type NavItem = { href: string; label: string };
 
 const DESKTOP_NAV_LINK_CLASS =
-  "px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap";
+  "px-1.5 xl:px-2 2xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-700 hover:text-[#1A3A6B] hover:bg-slate-50 rounded transition-colors whitespace-nowrap";
 
 /** Desktop links rendered before the "Services" dropdown. */
 const DESKTOP_NAV_BEFORE_SERVICES: NavItem[] = [
@@ -33,6 +33,7 @@ const DESKTOP_NAV_AFTER_SERVICES: NavItem[] = [
   { href: "/safety", label: "Safety (EHS)" },
   { href: "/clients", label: "Clients" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -76,7 +77,7 @@ export function Header() {
           {/* Desktop Navigation Links — All items on ONE unified line with whitespace-nowrap */}
           <nav
             aria-label="Main navigation"
-            className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 2xl:space-x-2"
+            className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5 2xl:space-x-2"
           >
             {DESKTOP_NAV_BEFORE_SERVICES.map((item) => (
               <Link key={item.href} href={item.href} className={DESKTOP_NAV_LINK_CLASS}>
@@ -142,13 +143,13 @@ export function Header() {
           </nav>
 
           {/* Desktop Right CTA Area — Aligned, Professional */}
-          <div className="hidden lg:flex items-center space-x-2.5 xl:space-x-3 shrink-0">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 shrink-0">
             <a
               href="/Unique_Engineers_Company_Profile.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3.5 py-2 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap"
+              className="bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-[#1A3A6B] text-slate-800 hover:text-[#1A3A6B] font-semibold px-3 xl:px-3.5 py-2 rounded text-xs xl:text-[13px] transition-colors inline-flex items-center space-x-1.5 whitespace-nowrap"
               title="Download Official 2026 Company Profile (PDF)"
             >
               <FileText className="w-3.5 h-3.5 text-[#1A3A6B] shrink-0" />
@@ -157,7 +158,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-4 py-2 rounded text-xs xl:text-[13px] shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
+              className="bg-[#1A3A6B] hover:bg-[#122d56] text-white font-semibold px-3.5 xl:px-4 py-2 rounded text-xs xl:text-[13px] shadow-sm transition-all duration-150 inline-flex items-center space-x-1.5 whitespace-nowrap"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
